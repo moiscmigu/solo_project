@@ -1,0 +1,21 @@
+<h1>Register</h1>
+
+<div class="registerCredentials">
+    <label for="firstName">First Name</label>
+    <input type="text" name="firstName" ng-model='rc.firstNameRegister'>
+
+    <label for="lastName">Last Name</label>
+    <input type="text" name="lastName" ng-model='rc.lastNameRegister'>
+
+    <label for="zipcode">zipcode</label>
+    <input type="number" name="zipcode" ng-model='rc.zipcode'>
+
+    <label for="Email">Email</label>
+    <input type="email" name="Email" ng-model='rc.emailRegister'>
+
+    <label for="Password">Password</label>
+    <input type="password" name="Password" ng-model='rc.passwordRegister'>
+
+    
+    <a href="http://localhost:7138/#!/login" ng-click='rc.register()' >Log In</a>
+</div>
