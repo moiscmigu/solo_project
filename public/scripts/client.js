@@ -4,46 +4,56 @@ var myApp = angular.module('myApp', ["ngRoute"]);
 
 myApp.config(function($routeProvider) {
     $routeProvider.when('/', {
-        templateUrlnp:'views/partials/logIn.html',
-        controller:'DefaultController as dc'
+        templateUrlnp:'',
+        controller:'DefaultController'
     }).when('/register', {
         templateUrl:'views/partials/register.html',
-        controller:'RegisterController as rc'
+        controller:'RegisterController'
     }).when('/login', {
         templateUrl:'views/partials/logIn.html',
-        controller:'LoginController as lc'
+        controller:'LoginController'
     }).when('/userProfile', {
         templateUrl:'views/partials/userProfile.html',
-        controller:'UserProfileController as uc'
+        controller:'UserProfileController'
     });
 
 });//end config
 
-//glo
+//global variables
 
 myApp.controller('DefaultController', DefaultController);
 myApp.controller('RegisterController', RegisterController);
 myApp.controller('LoginController', LoginController);
 myApp.controller('UserProfileController', UserProfileController);
 
-function DefaultController() {
-    var vm = this;
+localStorage.setItem('email', 'sdfsdfds');
+
+function DefaultController($scope, navBarService) {
+
     console.log('inside of DefaultController');
+
+    $scope.toggleHeader = true;
+
+    $scope.$on('toggleHeader', function(evt, data) {
+        $scope.toggleHeader = data;
+    });
+
 
 
 }//end DefaultController
 
-function RegisterController(credentialsService) {
-    var vm = this;
+function RegisterController( $scope, credentialsService) {
+    $scope.$emit('toggleHeader', false);
+
     console.log('RegisterController');
-    vm.register = function() {
-        if (vm.firstNameRegister === undefined || vm.lastNameRegister === undefined || vm.emailRegister === undefined || vm.passwordRegister === undefined || vm.zipcode === undefined) {
+    $scope.register = function() {
+        if ($scope.firstNameRegister === undefined || $scope.lastNameRegister === undefined || $scope.emailRegister === undefined || $scope.passwordRegister === undefined || $scope.zipcode === undefined) {
             sweetAlert({
 	               title: "Error!",
                    text: "Something went wrong",
                    type: "error"
                });//end of sweetAlert
-        } else if (vm.firstNameRegister === '' || vm.lastNameRegister === '' || vm.emailRegister === '' || vm.passwordRegister === '' || vm.zipcode === null) {
+        } else if ($scope.firstNameRegister === '' || $scope.lastNameRegister === '' || $scope.emailRegister === '' || $scope.passwordRegister === '' || $scope.zipcode === null) {
             sweetAlert({
 	               title: "Error!",
                    text: "Something went wrong",
@@ -51,27 +61,29 @@ function RegisterController(credentialsService) {
                });//end of sweetAlert
         } else {
             var userCredentials = {
-                firstName:vm.firstNameRegister.toLowerCase(),
-                lastName:vm.lastNameRegister.toLowerCase(),
-                email:vm.emailRegister,
-                password:vm.passwordRegister,
-                zipcode:vm.zipcode
+                firstName:$scope.firstNameRegister.toLowerCase(),
+                lastName:$scope.lastNameRegister.toLowerCase(),
+                email:$scope.emailRegister,
+                password:$scope.passwordRegister,
+                zipcode:$scope.zipcode
             };//end userCredentials
 
             credentialsService.sendRegister(userCredentials);
-
-
         }//end of conditional statement
     };//end register function
+
+
 }//end register controller
 
 
 
-function LoginController(credentialsService) {
-    var vm = this;
+function LoginController($scope, credentialsService) {
+
     console.log('LoginController');
-    vm.login = function() {
-        if (vm.emailLogin === undefined || vm.passwordLogin === undefined) {
+    $scope.$emit('toggleHeader', false);
+
+    $scope.login = function() {
+        if ($scope.emailLogin === undefined || $scope.passwordLogin === undefined) {
             sweetAlert({
 	               title: "Error!",
                    text: "Something went wrong",
@@ -79,14 +91,21 @@ function LoginController(credentialsService) {
                });//end of sweetAlert
         }  else {
             var userCredentials = {
-                email:vm.emailLogin,
-                password:vm.passwordLogin
+                email:$scope.emailLogin,
+                password:$scope.passwordLogin
                 };//end userCredentials
-            console.log(userCredentials);
+                // email = userCredentials.email;
+                localStorage.setItem('email', userCredentials.email);
             credentialsService.sendLogin(userCredentials).then(function() {
-                console.log('back from the service with', credentialsService.response);
+
                 if (credentialsService.response === 'Match!!!') {
+                    var email = userCredentials.email;
+
+                    credentialsService.getUsers(email);
+
+                    //this should always be at the ennd
                     window.location.replace("http://localhost:7138/#!/userProfile");
+
                 } else {
                     sweetAlert({
         	               title: "Error!",
@@ -102,8 +121,19 @@ function LoginController(credentialsService) {
 
 
 
-function UserProfileController() {
+function UserProfileController($scope, credentialsService) {
     console.log('inside of UserProfileController');
-    var vm = this;
-    vm.userName = "Moises";
+        $scope.$emit('toggleHeader', true);
+
+
+
+
+        $scope.userInfo = function() {
+            credentialsService.getUsers().then(function () {
+                console.log(credentialsService.userInfo);
+                $scope.name = credentialsService.userInfo.firstName;
+            });
+        };
+
+
 }//end of userProfile

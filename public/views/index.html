@@ -9,12 +9,14 @@
 
         <script src="scripts/client.js" charset="utf-8"></script>
         <script src="scripts/services/credentialsService.js" charset="utf-8"></script>
+        <script src="scripts/services/navBarService.js" charset="utf-8"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.min.js" charset="utf-8"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+        <link rel="stylesheet" href="styles/register.css">
     </head>
     <body ng-app='myApp'>
-        <div class="container-fluid" ng-controller='DefaultController as dc'>
-            <div class="Navigation">
+        <div class="container" ng-controller='DefaultController'>
+            <div class="Navigation" ng-if='toggleHeader'>
                 <h1>Navigation</h1>
             </div>
             <ng-view></ng-view>

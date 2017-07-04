@@ -43,6 +43,21 @@ router.post('/', function(req, res) {
 });
 
 
+router.get('/:email', function(req, res) {
+    console.log('only get post hit');
+    console.log(req.params);
+    
+    mongo.findOne(req.params, function (err, person){
+        if (err) {
+            console.log('err', err);
+            res.send(400);
+        } else {
+            console.log(person);
+            res.send(person);
+        }
+    });
+});//end of router.
+
 
 
 
