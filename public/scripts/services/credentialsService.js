@@ -30,7 +30,6 @@ function credentialsService($http) {
     sv.getUsers = function (data){
         console.log('inside of getUsers');
 
-        console.log(data);
         if(data === undefined) {
             return $http.get('/login/' +localStorage.getItem('userData')).then(function(res) {
                 sv.userInfo = res.data;

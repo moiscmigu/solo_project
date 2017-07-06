@@ -14,7 +14,7 @@ myApp.config(function($routeProvider) {
         controller:'LoginController'
     }).when('/userProfile', {
         templateUrl:'views/partials/userProfile.html',
-        controller:'UserProfileController'
+        controller:'UserProfileController as uc'
     });
 
 });//end config
@@ -121,17 +121,66 @@ function LoginController($scope, credentialsService) {
 
 
 
-function UserProfileController($scope, credentialsService) {
-    console.log('inside of UserProfileController');
+function UserProfileController($scope, credentialsService, AddItemService) {
+    var vm = this;
         $scope.$emit('toggleHeader', true);
+        $scope.popupDiv = false;
+        $scope.changeButton = true;
+        $scope.myItems = [];
+        $scope.addNewItem = function() {
+            console.log('addNewItem clicked');
+            $scope.popupDiv = !$scope.popupDiv;
+
+            $scope.changeButton = false;
+        };//end addNewItem function
+
+        $scope.submitNewItem = function() {
+            console.log('submitNewItem clicked');
+
+            var newItem = {
+                itemName:vm.itemName,
+                rendDay: vm.rentDay,
+                rentWeek: vm.rentWeek ,
+                rentMonth:vm.rentMonth,
+                email: vm.emailContact,
+                phone: vm.phoneContact,
+                description: vm.itemDescription
+            };//end newItem
+
+            AddItemService.addItemtoDB(newItem).then(function() {
+                res = AddItemService.response;
+                if (res.status !== Number(200)) {
+                } else {
+
+                }
+            }).catch(function(err) {
+                console.log('err', err);
+            });//end addItemtoDB
 
 
+            $scope.popupDiv = !$scope.popupDiv;
+            $scope.changeButton = true;
+        };//end submitNewItem function
 
+        $scope.getItems = function() {
+            console.log('inside of get items');
+            credentialsService.getUsers().then(function () {
+                $scope.userEmail = credentialsService.userInfo.email;
+                AddItemService.getItemsFromDB($scope.userEmail).then(function() {
+                    console.log('back in the client with', AddItemService.itemsResponse);
+                    for (var i = 0; i < AddItemService.itemsResponse.data.length; i++) {
+                        $scope.myItems.push(AddItemService.itemsResponse.data[i]);
+                    }
+                });
+            });
+
+
+        };//end getitems
 
         $scope.userInfo = function() {
             credentialsService.getUsers().then(function () {
-                console.log(credentialsService.userInfo);
-                $scope.name = credentialsService.userInfo.firstName;
+                $scope.email = credentialsService.userInfo.email;
+                return $scope.email;
             });
         };
 

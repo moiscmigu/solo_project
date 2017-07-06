@@ -1,0 +1,34 @@
+
+.imageContainer {
+    height: 15em;
+    width: 15em;
+    border: 1px solid orange;
+    display: inline-block;
+}
+
+#userName {
+    display: inline-block;
+    margin-left: 17%;
+}
+
+
+.itemsRenting {
+    height: 12em;
+    width: 15em;
+    display: inline-block;
+    margin:0
+    border: 1px solid orange;
+}
+
+.itemsRented {
+    height: 12em;
+    width: 15em;
+    display: inline-block;
+    margin:0;
+}
+
+
+.editableContent {
+    max-width:16em;
+    float:right;
+}
