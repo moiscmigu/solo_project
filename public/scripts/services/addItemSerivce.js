@@ -1,6 +1,4 @@
 myApp.service('AddItemService', function($http) {
-    console.log('in my service');
-
     var sv = this;
     sv.addItemtoDB = function(item) {
         console.log(item);
@@ -14,8 +12,6 @@ myApp.service('AddItemService', function($http) {
     };//end of addItemtoDB
 
     sv.getItemsFromDB = function(data) {
-        console.log('inside of getItemsFromDB');
-        console.log('data', data);
         return $http.get('/newItem/' + data).then(function(res){
             console.log('back from the server with ', res);
             sv.itemsResponse = res;

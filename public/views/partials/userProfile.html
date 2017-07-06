@@ -1,47 +1,53 @@
-<div class="userProfile" ng-init='userInfo()'>
+<div class="container userProfile" ng-init='userInfo()'>
+    <h1 id='userName'>Welcome {{name}} </h1>
 
     <div class="row">
-        <div class="col-md-2 imageContainer">
-            <p>Image goes here</p>
-        </div>
-        <h1 id='userName'>Welcome {{name}} </h1>
-    </div>
-
-        <div class="itemsRenting" ng-init='getItems()'>
+        <div class="col-md-6 itemsRenting" ng-init='getItems()' ng-if='showItems'>
             <h3>Items Renting</h3>
             <ul>
-                <li ng-repeat='items in myItems'>{{items.itemName}}</li>
+                <li ng-repeat='items in myItems' ng-click='showItemInfo($index)'>{{items.itemName}}</li>
             </ul>
         </div>
-        <div class="editableContent" ng-if='popupDiv'>
-            <label for="itemName">Item Name</label>
+
+        <div class="col-md-6 editableContent" ng-if='popupDiv'>
+            <label for="itemName">Item Name:</label>
             <input type="text" name="itemName"  ng-model='uc.itemName'>
 
-            <label for="rentDay">Rent per Day</label>
+            <label for="itemName">Rent per Day:</label>
             <input type="number" name="rentDay" value="" ng-model='uc.rentDay'>
 
-            <label for="rentWeek">Rent per Week</label>
+            <label for="rentWeek">Rent per Week:</label>
             <input type="number" name="rentWeek" value="" ng-model='uc.rentWeek'>
 
-            <label for="rentMonth">Rent per Month</label>
+            <label for="rentMonth">Rent per Month:</label>
             <input type="number" name="rentMonth" value="" ng-model='uc.rentMonth'>
 
-            <label for="email">Email</label>
-            <input type="text" name="email" value="" ng-model='uc.emailContact'>
+            <label for="email">Email:</label>
+            <input type="email" name="email" value="" ng-model='uc.emailContact'>
 
-            <label for="phone">Phone</label>
-            <input type="Number" name="phone" value="" ng-model='uc.phoneContact'>
+            <label for="phone">Phone:</label>
+            <input type="tel" name="phone" value="" ng-model='uc.phoneContact'>
 
-            <label for="itemDescription">Description</label>
+            <label for="itemDescription">Description:</label>
             <textarea name="itemDescription" rows="8" cols="80" id='contentTextArea' ng-model='uc.itemDescription'></textarea>
 
+            <input id='submitDataButton' type="submit" name="button" ng-model='submitButton' ng-click='submitNewItem()' value ='Submit'  ng-hide='changeButton'/>
+            <input id='submitDataButton' type="submit" name="button" ng-model='submitButton' ng-click='cancelNewItem()' value ='Cancel'  ng-hide='changeButton'/>
         </div>
-        <input type="submit" name="button" ng-model='addButton' ng-click='addNewItem()' value ='Add New' ng-show='changeButton'/>
-        <input type="submit" name="button" ng-model='submitButton' ng-click='submitNewItem()' value ='Submit'  ng-hide='changeButton'/>
+
+        <div class="col-md-6 itemInfo">
+            <h1>{{itemNameDisplay}}</h1>
+            <h5>Rent for a day: {{rentDay | currency }}</h5>
+            <h5>Rent for a week: {{rentItemWeek | currency }}</h5>
+            <h5>Rent for a month: {{rentItemMonth | currency }}</h5>
+            <h5>Email: {{rentItemEmail}}</h5>
+            <h5>Phone: {{rentItemPhone}}</h5>
 
 
 
+        </div>
+    </div>
 
 
-
+    <input  type="submit" name="button" ng-model='addButton' ng-click='addNewItem()' value ='Add New' ng-show='changeButton'/>
 </div>

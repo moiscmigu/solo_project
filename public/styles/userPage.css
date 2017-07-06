@@ -1,4 +1,5 @@
 
+
 .imageContainer {
     height: 15em;
     width: 15em;
@@ -14,10 +15,10 @@
 
 .itemsRenting {
     height: 12em;
-    width: 15em;
+    width: 50%;
     display: inline-block;
-    margin:0
-    border: 1px solid orange;
+    margin:0;
+    text-align: center;
 }
 
 .itemsRented {
@@ -29,6 +30,50 @@
 
 
 .editableContent {
-    max-width:16em;
-    float:right;
+
+    overflow: scroll;
+    display: inline-block;
+    border: 1px solid orange;
+    width: 50%;
+    align-content: center;
+}
+
+
+.editableContent label {
+    display: inline-block;
+    margin-left: 0.5em;
+}
+
+.editableContent input {
+    display: inline-block;
+    margin:0 0 1em 0.5em ;
+    border: 0;
+    border-bottom: 1px solid red;
+    outline: 0;
+    background-color: black;
+
+}
+
+
+#submitDataButton {
+    margin:auto;
+}
+
+#contentTextArea {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    width: 11.8em;
+    margin: 0.5em;
+}
+
+.itemInfo {
+    float: right;
+    text-align: center;
+    width: 50%;
+
+}
+
+ul {
+    list-style: none;
 }
