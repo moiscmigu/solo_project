@@ -1,7 +1,6 @@
 myApp.service('AddItemService', function($http) {
     var sv = this;
     sv.addItemtoDB = function(item) {
-        console.log(item);
         return $http.post('/newItem', item).then(function(res){
             sv.response = res;
             return sv.response;
@@ -17,9 +16,5 @@ myApp.service('AddItemService', function($http) {
         }).catch(function(err) {
             console.log('err', err);
         });//end http call
-    };
-
-
-
-
+    };//end of getItemsFromDB
 });//end of service

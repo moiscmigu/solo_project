@@ -7,7 +7,10 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="vendors/angular.min.js" charset="utf-8"></script>
         <script src="vendors/angular-route.min.js" charset="utf-8"></script>
-
+        <script src="scripts/controllers/defaultController.js" charset="utf-8"></script>
+        <script src="scripts/controllers/RegisterController.js" charset="utf-8"></script>
+        <script src="scripts/controllers/LoginController.js" charset="utf-8"></script>
+        <script src="scripts/controllers/userController.js" charset="utf-8"></script>
         <script src="scripts/client.js" charset="utf-8"></script>
         <script src="scripts/services/credentialsService.js" charset="utf-8"></script>
         <script src="scripts/services/navBarService.js" charset="utf-8"></script>
@@ -18,15 +21,15 @@
         <link rel="stylesheet" href="styles/style.css">
     </head>
     <body ng-app='myApp'>
-        <div class="" ng-controller='DefaultController'>
+        <div ng-controller='DefaultController as dc'>
             <div class="navImage">
 
 
-            <div class="Navigation" ng-if='toggleHeader'>
+            <div class="Navigation" ng-if='toggleHeader' >
                 <div class="navContent">
                     <a href="http://localhost:7138/#!/login">Logout</a>
-                    <input class='searchNav' type="submit" name="button" value="Search">
-                    <input type="text" name="" placeholder="Search item">
+                    <input class='searchNav' type="button" name="button" value="Search" ng-click='dc.searchForItem()' >
+                    <input id='getUserInput' type="text"  placeholder="Search Item" ng-model='dc.userSearch'/>{{ userSearch }}
 
                 </div>
 
