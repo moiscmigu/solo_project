@@ -18,13 +18,21 @@
         <link rel="stylesheet" href="styles/style.css">
     </head>
     <body ng-app='myApp'>
-        <div class="container" ng-controller='DefaultController'>
+        <div class="" ng-controller='DefaultController'>
+            <div class="navImage">
+
+
             <div class="Navigation" ng-if='toggleHeader'>
-                <button class='userNavCredentials' type="button" name="button"><a href="http://localhost:7138/#!/login">Logout</a></button>
-                <button type="button" name="button">Search</button>
-                <input type="text" name="" value="Search item">
+                <div class="navContent">
+                    <a href="http://localhost:7138/#!/login">Logout</a>
+                    <input class='searchNav' type="submit" name="button" value="Search">
+                    <input type="text" name="" placeholder="Search item">
 
+                </div>
 
+                <h1 class='greetUser'>Welcome {{userNameNav}}</h1>
+
+            </div>
             </div>
             <ng-view></ng-view>
         </div>

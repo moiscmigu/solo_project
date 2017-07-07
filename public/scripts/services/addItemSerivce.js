@@ -3,7 +3,6 @@ myApp.service('AddItemService', function($http) {
     sv.addItemtoDB = function(item) {
         console.log(item);
         return $http.post('/newItem', item).then(function(res){
-            console.log('back from the server with ', res);
             sv.response = res;
             return sv.response;
         }).catch(function(err) {
@@ -13,7 +12,6 @@ myApp.service('AddItemService', function($http) {
 
     sv.getItemsFromDB = function(data) {
         return $http.get('/newItem/' + data).then(function(res){
-            console.log('back from the server with ', res);
             sv.itemsResponse = res;
             return sv.itemsResponse;
         }).catch(function(err) {

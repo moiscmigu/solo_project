@@ -26,16 +26,20 @@ myApp.controller('RegisterController', RegisterController);
 myApp.controller('LoginController', LoginController);
 myApp.controller('UserProfileController', UserProfileController);
 
-localStorage.setItem('email', 'sdfsdfds');
+
 
 function DefaultController($scope, navBarService) {
 
-    console.log('inside of DefaultController');
 
     $scope.toggleHeader = true;
+    $scope.userNameNav = 'userNameNav';
 
     $scope.$on('toggleHeader', function(evt, data) {
         $scope.toggleHeader = data;
+    });
+
+    $scope.$on('changeName', function(evt, data) {
+        $scope.userNameNav = data;
     });
 
 
@@ -124,6 +128,7 @@ function LoginController($scope, credentialsService) {
 function UserProfileController($scope, credentialsService, AddItemService) {
     var vm = this;
         $scope.$emit('toggleHeader', true);
+
         $scope.showItems = true;
         $scope.popupDiv = false;
         $scope.changeButton = true;
@@ -142,29 +147,27 @@ function UserProfileController($scope, credentialsService, AddItemService) {
 
 
 
-
-            var newItem = {
-                itemName:vm.itemName,
-                rendDay: vm.rentDay,
-                rentWeek: vm.rentWeek ,
-                rentMonth:vm.rentMonth,
-                email: vm.emailContact,
-                phone: vm.phoneContact,
-                description: vm.itemDescription
-            };//end newItem
-
-
-
-
-            AddItemService.addItemtoDB(newItem).then(function() {
-                res = AddItemService.response;
-                if (res.status !== Number(200)) {
-                } else {
-
-                }//end conditional statement
-            }).catch(function(err) {
-                console.log('err', err);
-            });//end addItemtoDB
+            credentialsService.getUsers().then(function () {
+                $scope.sendUserEmail = credentialsService.userInfo.email;
+                var newItem = {
+                    itemName:vm.itemName,
+                    rentDay: vm.rentDay,
+                    rentWeek: vm.rentWeek ,
+                    rentMonth:vm.rentMonth,
+                    email: $scope.sendUserEmail,
+                    phone: vm.phoneContact,
+                    description: vm.itemDescription
+                };//end newItem
+                
+                AddItemService.addItemtoDB(newItem).then(function() {
+                    res = AddItemService.response;
+                    if (res.status !== Number(200)) {
+                    } else {
+                    }//end conditional statement
+                }).catch(function(err) {
+                    console.log('err', err);
+                });//end addItemtoDB
+            });//end credentialsService.getUsers()
 
             $scope.showItems = true;
             $scope.popupDiv = !$scope.popupDiv;
@@ -172,24 +175,17 @@ function UserProfileController($scope, credentialsService, AddItemService) {
         };//end submitNewItem function
 
         $scope.getItems = function() {
-            console.log('inside of get items');
             credentialsService.getUsers().then(function () {
-                console.log(credentialsService.userInfo.email);
                 AddItemService.getItemsFromDB(credentialsService.userInfo.email).then(function() {
                     $scope.myItems = [];
-                    console.log(credentialsService.userInfo.email);
 
                     for (var i = 0; i < AddItemService.itemsResponse.data.length; i++) {
                             if (credentialsService.userInfo.email ===  AddItemService.itemsResponse.data[i].email) {
                                 $scope.myItems.push(AddItemService.itemsResponse.data[i]);
-                            }
-                    }
-
+                            }//end conditional
+                    }//end for loop
                 });//end get items from database
             });//end getusers
-
-
-
         };//end getitems
 
 
@@ -197,7 +193,7 @@ function UserProfileController($scope, credentialsService, AddItemService) {
             $scope.showItems = true;
             $scope.popupDiv = !$scope.popupDiv;
             $scope.changeButton = true;
-        };
+        };//end cancelNewItem
 
 
         $scope.showItemInfo = function(index) {
@@ -206,16 +202,17 @@ function UserProfileController($scope, credentialsService, AddItemService) {
             $scope.rentItemWeek = $scope.myItems[index].rentWeek;
             $scope.rentItemMonth = $scope.myItems[index].rentMonth;
             $scope.rentItemEmail = $scope.myItems[index].email;
-            $scope.rentItemPhone = $filter('tel')(scope.myItems[index].phone);
-            console.log($scope.rentDay);
+            $scope.rentItemPhone = $scope.myItems[index].phone;
+            $scope.rentItemDescription = $scope.myItems[index].description;
         };//end showItemInfo
 
 
         $scope.userInfo = function() {
             credentialsService.getUsers().then(function () {
                 $scope.name = credentialsService.userInfo.firstName;
-            });
-        };
+                $scope.$emit('changeName', $scope.name);
+            });//end credentialsService
+        };//end user info function
 
 
 }//end of userProfile

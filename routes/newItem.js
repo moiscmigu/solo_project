@@ -7,9 +7,10 @@ router.use(bodyParser.json());
 
 router.post('/', function(req, res){
     console.log('/newitem url hit');
+    console.log('cheking to see what is wrong with rentDay', req.body.rentDay);
     var newUser = {
         itemName:req.body.itemName,
-        rendDay: req.body.rentDay,
+        rentDay: req.body.rentDay,
         rentWeek: req.body.rentWeek ,
         rentMonth:req.body.rentMonth,
         email: req.body.email,
