@@ -23,7 +23,7 @@ function LoginController($scope, credentialsService) {
                     credentialsService.getUsers(email);
 
                     //this should always be at the ennd
-                    window.location.replace("http://localhost:7138/#!/userProfile");
+                    window.location.href ="http://localhost:7138/#!/userProfile";
 
                 } else {
                     sweetAlert({

@@ -1,0 +1,28 @@
+<div class="container userProfile" ng-init='revieceData()'>
+
+    <div class="row">
+        <div class="col-md-6 itemsRenting" ng-init='getItems()' ng-if='showItems'>
+            <h3>Items Renting</h3>
+            <ul>
+                <li ng-repeat='items in myItems' ng-click='showItemInfo($index)'>{{items.itemName}}</li>
+
+            </ul>
+        </div>
+
+        <div class="col-md-6 itemInfo">
+            <h1>{{itemNameDisplay}}</h1>
+            <h5>Rent for a day: {{rentItemDay | currency }}</h5>
+            <h5>Rent for a week: {{rentItemWeek | currency }}</h5>
+            <h5>Rent for a month: {{rentItemMonth | currency }}</h5>
+            <h5 ng-click='sendEmailMessage()'>Email: {{rentItemEmail}}</h5>
+            <h5>Phone: {{rentItemPhone}}</h5>
+            <h5>description: {{rentItemDescription}}</h5>
+
+
+
+        </div>
+    </div>
+
+
+
+</div>

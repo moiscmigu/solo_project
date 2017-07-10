@@ -1,0 +1,10 @@
+<div class="container" ng-init='userSearch()'>
+    <h1>Results: {{ItemSearched}}</h1>
+    <div class="itemsSearched" ng-repeat='items in itemsFromDataBase'>
+        <ul>
+            <li ng-click='goToUserPage($index)'>{{items.itemName}}</li>
+            <li>Description:{{items.description}}</li>
+        </ul>
+    </div>
+
+</div>

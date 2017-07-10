@@ -6,6 +6,8 @@ var index = require('./routes/index');
 var register = require('./routes/register');
 var logIn = require('./routes/login');
 var newItem = require('./routes/newItem.js');
+var searchItem = require('./routes/searchItem');
+var sendMessage = require('./routes/sendMessage');
 //uses
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({extended:true}));
@@ -13,6 +15,8 @@ app.use('/', index);
 app.use('/register', register);
 app.use('/login', logIn);
 app.use('/newItem', newItem);
+app.use('/searchItem', searchItem);
+app.use('/sendMessage', sendMessage);
 
 
 app.listen(port, function() {

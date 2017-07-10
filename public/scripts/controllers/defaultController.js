@@ -1,4 +1,4 @@
-function DefaultController($scope, navBarService) {
+function DefaultController($scope, navBarService, SearchItemService) {
     console.log('default');
     var vm = this;
 
@@ -6,7 +6,6 @@ function DefaultController($scope, navBarService) {
     $scope.userNameNav ='';
     //Sharing info with other controllers
     $scope.$on('toggleHeader', function(evt, data) {
-        console.log(data);
         $scope.toggleHeader = data;
     });
 
@@ -16,8 +15,8 @@ function DefaultController($scope, navBarService) {
 
 
     vm.searchForItem = function() {
-        console.log('button clicked');
-        console.log(vm.userSearch);
+        SearchItemService.search(vm.userSearch);
+        window.location.href ="http://localhost:7138/#!/search";
     };
 
 }//end DefaultController
