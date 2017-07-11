@@ -2,23 +2,18 @@
 
 <div class="row register">
     <h1 class='h1Header'>Register</h1>
-    <div class="col-md-6">
-        <label for="firstName">First Name</label>
-        <input type="text" name="firstName" ng-model='firstNameRegister' class='registerInput'>
 
-        <label for="lastName">Last Name</label>
-        <input type="text" name="lastName" ng-model='lastNameRegister' class='registerInput'>
+        <input type="text" name="firstName" ng-model='firstNameRegister' class='registerInput' placeholder="First Name">
 
-        <label for="zipcode">zipcode</label>
-        <input type="number" name="zipcode" ng-model='zipcode' class='registerInput'>
+        <input type="text" name="lastName" ng-model='lastNameRegister' class='registerInput' placeholder="Last Name">
 
-        <label for="Email">Email</label>
-        <input type="email" name="Email" ng-model='emailRegister' class='registerInput'>
+        <input type="number" name="zipcode" ng-model='zipcode' class='registerInput' placeholder="Zipcode">
 
-        <label for="Password">Password</label>
-        <input type="password" name="Password" ng-model='passwordRegister' class='registerInput'>
+        <input type="email" name="Email" ng-model='emailRegister' class='registerInput' placeholder="Email">
+
+        <input type="password" name="Password" ng-model='passwordRegister' class='registerInput' placeholder="password">
 
 
         <a href="http://localhost:7138/#!/login" ng-click='register()' >Log In</a>
-    </div>
+
 </div>

@@ -9,7 +9,6 @@ function SearchItemController($scope, SearchItemService) {
                        type: "error"
                    });//end of sweetAlert
                 window.location.href ="http://localhost:7138/#!/userProfile";
-                
             }
             else{
                 $scope.ItemSearched = SearchItemService.itemSearched;
@@ -24,7 +23,9 @@ function SearchItemController($scope, SearchItemService) {
     $scope.goToUserPage = function(index) {
         console.log('index ', index);
         var item = $scope.itemsFromDataBase[index];
+        console.log('Items from the database', $scope.itemsFromDataBase[index]);
         SearchItemService.sendDataToUserPage(item);
         window.location.href ="http://localhost:7138/#!/itemSearch";
+        //
     };// end goTo
 }//end of controller

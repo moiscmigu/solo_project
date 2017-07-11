@@ -1,4 +1,4 @@
-function OtherUserController($scope, credentialsService, AddItemService, SearchItemService, sendMessage) {
+function OtherUserController($scope, credentialsService, AddItemService, SearchItemService ) {
     var vm = this;
         $scope.$emit('toggleHeader', true);
 
@@ -14,33 +14,7 @@ function OtherUserController($scope, credentialsService, AddItemService, SearchI
             $scope.changeButton = false;
         };//end addNewItem function
 
-        $scope.submitNewItem = function() {
-            credentialsService.getUsers().then(function () {
-                $scope.sendUserEmail = credentialsService.userInfo.email;
-                var newItem = {
-                    itemName:vm.itemName,
-                    rentDay: vm.rentDay,
-                    rentWeek: vm.rentWeek ,
-                    rentMonth:vm.rentMonth,
-                    email: $scope.sendUserEmail,
-                    phone: vm.phoneContact,
-                    description: vm.itemDescription
-                };//end newItem
 
-                AddItemService.addItemtoDB(newItem).then(function() {
-                    res = AddItemService.response;
-                    if (res.status !== Number(200)) {
-                    } else {
-                    }//end conditional statement
-                }).catch(function(err) {
-                    console.log('err', err);
-                });//end addItemtoDB
-            });//end credentialsService.getUsers()
-
-            $scope.showItems = true;
-            $scope.popupDiv = !$scope.popupDiv;
-            $scope.changeButton = true;
-        };//end submitNewItem function
 
         $scope.getItems = function() {
             credentialsService.getUsers().then(function () {
@@ -57,11 +31,6 @@ function OtherUserController($scope, credentialsService, AddItemService, SearchI
             });//end getusers
         };//end getitems
 
-        $scope.cancelNewItem = function() {
-            $scope.showItems = true;
-            $scope.popupDiv = !$scope.popupDiv;
-            $scope.changeButton = true;
-        };//end cancelNewItem
 
         $scope.showItemInfo = function(index) {
             $scope.itemNameDisplay = $scope.myItems[index].itemName;
@@ -80,16 +49,4 @@ function OtherUserController($scope, credentialsService, AddItemService, SearchI
         };// end goTo\
 
 
-        $scope.sendEmailMessage = function() {
-            console.log('clicked ');
-
-            console.log($scope.myItems);
-                credentialsService.getUsers().then(function () {
-                    $scope.email = credentialsService.userInfo.email;
-                    var searchedUser = $scope.userData.email;
-                    var sendFrom = $scope.email;
-                    sendMessage.sendEmailMessage(sendFrom, searchedUser);
-                });//end credentialsService
-
-        };//end sendEmailMessage
 }//end of userProfile

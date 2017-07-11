@@ -1,0 +1,36 @@
+.login {
+
+    height: 10em;
+    width: 50%;
+    position: fixed; /* or absolute */
+    margin:0;
+  top: 40%;
+  left: 25%;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 1em;
+
+}
+
+.login h1 {
+    font-size: 5em;
+    display: block;
+    color: white;
+}
+
+.login input {
+    /*background:url(bg-dot.jpg) repeat-x center bottom;*/
+    background-color: rgba(0, 0, 0, 0.5);
+    border:none;
+    padding:2px 2px
+    color:white;
+
+}
+
+
+.login input:focus {
+    outline: none;
+    background:url(bg-dot.jpg) repeat-x center bottom;
+    border:none;
+    padding:2px 2px
+}
