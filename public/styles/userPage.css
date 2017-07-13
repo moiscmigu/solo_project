@@ -33,10 +33,10 @@
 
 .editableContent {
 
-    overflow: scroll;
+
     display: inline-block;
-    border: 1px solid orange;
-    width: 50%;
+
+
     align-content: center;
 }
 
@@ -44,6 +44,16 @@
 .editableContent label {
     display: inline-block;
     margin-left: 0.5em;
+}
+
+.editableContent table td {
+    color:black
+}
+
+.editableContent table textarea {
+    color:black;
+    height:3em;
+    margin: 0;
 }
 
 .editableContent input {

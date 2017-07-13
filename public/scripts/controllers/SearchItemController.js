@@ -1,5 +1,5 @@
 function SearchItemController($scope, SearchItemService) {
-    $scope.$emit('toggleHeader', false);
+    $scope.$emit('toggleHeader', true);
     $scope.match = [];
     $scope.noMatch = [];
 
@@ -34,7 +34,7 @@ function SearchItemController($scope, SearchItemService) {
                     }
                     else {
 
-                        $scope.noMatch.push(SearchItemService.itemsFromDataBase[i]);
+                         $scope.noMatch.push(SearchItemService.itemsFromDataBase[i]);
                     }
                 }//end of for loop
                 console.log($scope.noMatch);

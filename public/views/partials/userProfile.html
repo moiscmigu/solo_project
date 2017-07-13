@@ -6,7 +6,7 @@
 
 
 
-        <table class="table table-condensed"  ng-init='getItems()'>
+        <table class="table table-condensed"  ng-init='getItems()' ng-if='showItems'>
 
             <tr >
                 <th>Item</th>
@@ -33,6 +33,32 @@
 
         </table>
         <div class="col-md-6 editableContent" ng-if='popupDiv'>
+
+
+            <table class="table table-condensed"  >
+
+                <tr >
+                    <th>Item</th>
+                    <th>per-day</th>
+                    <th>per-week</th>
+                    <th>per-month</th>
+
+
+                    <th>description</th>
+
+
+                </tr>
+                <tr>
+                    <td ><input type="text" name="itemName"  ng-model='uc.itemName'></td>
+                    <td ><input type="number" name="rentDay" value="" ng-model='uc.rentDay'></td>
+                    <td><input type="number" name="rentWeek" value="" ng-model='uc.rentWeek'></td>
+                    <td><input type="number" name="rentMonth" value="" ng-model='uc.rentMonth'></td>
+                    <td><textarea name="itemDescription" rows="8" cols="80" id='contentTextArea' ng-model='uc.itemDescription'></textarea></td>
+
+
+            </table>
+
+
             <!-- <label for="itemName">Item Name:</label>
             <input type="text" name="itemName"  ng-model='uc.itemName'>
 
