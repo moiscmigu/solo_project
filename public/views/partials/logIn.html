@@ -1,13 +1,20 @@
 <div class="login" >
 
 
-<h1>Log In</h1>
+<h1>GarageShare</h1>
+<h3>LogIn</h3>
 <div class="credetialsLogin" ng-model='credetialsLogin'>
 
     <input type="email" name="email" placeholder="Enter your email" ng-model='emailLogin'>
 
     <input type="password" name="password" placeholder="Enter your password" ng-model='passwordLogin'>
-    <button type="button" name="button" ng-click='login()'>Log In</button>
+    <br>
+    <input type="checkbox" name="checkbox" value="check" class="agree" />
+    <label for="checkbox" class='agree'> I have read and agree to the Terms and Conditions and Privacy Policy</label>
+
+    <br>
+
+    <button type="button" name="button" ng-click='login()' id='loginButton'>Log In</button>
     <a href="http://localhost:7138/#!/register">Register</a>
 
 

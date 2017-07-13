@@ -7,7 +7,7 @@ router.use(bodyParser.json());
 
 router.post('/', function(req, res){
     console.log('/newitem url hit');
-    console.log('cheking to see what is wrong with rentDay', req.body.rentDay);
+    console.log('cheking to see what is wrong with rentDay', req.body.zipcode);
     var newUser = {
         itemName:req.body.itemName,
         rentDay: req.body.rentDay,
@@ -15,7 +15,10 @@ router.post('/', function(req, res){
         rentMonth:req.body.rentMonth,
         email: req.body.email,
         phone:req.body.phone,
-        description: req.body.description
+        description: req.body.description,
+        zipcode: req.body.zipcode,
+        state:req.body.state,
+        city:req.body.city
     };
     console.log('saving user:', newUser);
     // save newUser to db

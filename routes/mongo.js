@@ -7,7 +7,10 @@ var userSchema = new mongoose.Schema({
   lastName: String,
   email:String,
   zipcode: Number,
-  password: String
+  password: String,
+  state:String,
+  city:String,
+  phone:Number
 });
 
 var userModel = mongoose.model('userModel', userSchema);

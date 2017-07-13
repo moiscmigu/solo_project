@@ -27,7 +27,10 @@ router.post('/', function(req, res) {
               lastName: req.body.lastName,
               email:req.body.email,
               zipcode: req.body.zipcode,
-              password: hash
+              password: hash,
+              state:req.body.state,
+              city:req.body.city,
+              phone:req.body.phone
           };
           console.log('saving user:', newUser);
           // save newUser to db

@@ -28,6 +28,6 @@ myApp.config(function($routeProvider) {
         controller:'SearchItemController'
     }).when('/itemSearch', {
         templateUrl:'views/partials/searchUserProfile.html',
-        controller:'OtherUserController'
+        controller:'OtherUserController as oc'
     });
 });//end config

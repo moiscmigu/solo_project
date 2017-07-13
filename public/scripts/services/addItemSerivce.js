@@ -16,5 +16,5 @@ myApp.service('AddItemService', function($http) {
         }).catch(function(err) {
             console.log('err', err);
         });//end http call
-    };//end of getItemsFromDB
+    };//end of get
 });//end of service

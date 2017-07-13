@@ -3,7 +3,7 @@
     width: 50%;
     position: fixed; /* or absolute */
     margin:0;
-  top: 20%;
+  top: 14%;
   left: 25%;
   text-align: center;
   background-color: rgba(0, 0, 0, 0.4);
@@ -24,5 +24,6 @@
 }
 
 ::-webkit-input-placeholder { /* Chrome */
-  color: grey;
+  color: #e3e4e5;
+
 }

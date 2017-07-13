@@ -1,4 +1,4 @@
-function OtherUserController($scope, credentialsService, AddItemService, SearchItemService ) {
+function OtherUserController($scope, credentialsService, AddItemService, SearchItemService, sendMessage ) {
     var vm = this;
         $scope.$emit('toggleHeader', true);
 
@@ -7,12 +7,6 @@ function OtherUserController($scope, credentialsService, AddItemService, SearchI
         $scope.changeButton = true;
         $scope.myItems = [];
 
-        $scope.addNewItem = function() {
-            $scope.popupDiv = !$scope.popupDiv;
-
-            $scope.showItems = false;
-            $scope.changeButton = false;
-        };//end addNewItem function
 
 
 
@@ -24,6 +18,7 @@ function OtherUserController($scope, credentialsService, AddItemService, SearchI
                     for (var i = 0; i < AddItemService.itemsResponse.data.length; i++) {
                             if ($scope.userData.email ===  AddItemService.itemsResponse.data[i].email) {
                                 $scope.myItems.push(AddItemService.itemsResponse.data[i]);
+                                console.log('my items', $scope.myItems);
                             }//end conditional
 
                     }//end for loop
@@ -46,7 +41,22 @@ function OtherUserController($scope, credentialsService, AddItemService, SearchI
             SearchItemService.sendDataToUserPage().then(function() {
                 $scope.userData = SearchItemService.searchUserData;
             });//end of SearchItemService
-        };// end goTo\
+        };// end goTo
+
+
+        $scope.sendPhoneMessage = function(index) {
+            console.log('clicked');
+            var message = prompt('Send a message...');
+            var phoneNumber = String($scope.myItems[0].phone);
+
+            // sendMessage.sendPhoneMessage(message, phoneNumber);
+
+        };//end of sendPhoneMessage
+        $scope.sendEmailMessage = function() {
+            console.log('clicked');
+            sendMessage.sendEmailMessage();
+        };//
+
 
 
 }//end of userProfile

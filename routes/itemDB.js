@@ -13,7 +13,10 @@ var itemSchema = new mongoose.Schema({
     rentMonth:Number,
     email: String,
     phone: Number,
-    description: String
+    description: String,
+    zipcode:Number,
+    state:String,
+    city:String
 });
 
 var itemModel = mongoose.model('itemModel', itemSchema);

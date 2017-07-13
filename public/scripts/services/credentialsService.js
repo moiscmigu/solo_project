@@ -8,7 +8,7 @@ function credentialsService($http) {
     //registers a new user
     sv.sendRegister = function(data) {
 
-        console.log();
+        console.log('from service', data);
         return $http.post('/register', data).then(function(res) {
         });
     };//end of sendRegister\

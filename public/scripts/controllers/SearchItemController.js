@@ -1,7 +1,19 @@
 function SearchItemController($scope, SearchItemService) {
     $scope.$emit('toggleHeader', false);
+    $scope.match = [];
+    $scope.noMatch = [];
+
+    $scope.getBodyStyle = function () {
+        console.log('in getBodyStyle');
+        return {background: "url(http://momentumbooks.com.au/wp-content/uploads/2013/06/space.jpg)" };
+    };
+
+
+
     $scope.userSearch = function() {
         SearchItemService.search().then(function() {
+            $scope.match = [];
+            $scope.noMatch = [];
             if (SearchItemService.itemsFromDataBase.length == 0) {
                 sweetAlert({
                        title: "Error!",
@@ -11,8 +23,21 @@ function SearchItemController($scope, SearchItemService) {
                 window.location.href ="http://localhost:7138/#!/userProfile";
             }
             else{
+
                 $scope.ItemSearched = SearchItemService.itemSearched;
-                $scope.itemsFromDataBase = SearchItemService.itemsFromDataBase;
+                for (var i = 0; i < SearchItemService.itemsFromDataBase.length; i++) {
+
+                    if (SearchItemService.itemsFromDataBase[i].state === SearchItemService.state) {
+
+
+                        $scope.match.push(SearchItemService.itemsFromDataBase[i]);
+                    }
+                    else {
+
+                        $scope.noMatch.push(SearchItemService.itemsFromDataBase[i]);
+                    }
+                }//end of for loop
+                console.log($scope.noMatch);
             }//end conditinal statements
 
         }).catch(function(err) {
@@ -22,10 +47,19 @@ function SearchItemController($scope, SearchItemService) {
 
     $scope.goToUserPage = function(index) {
         console.log('index ', index);
-        var item = $scope.itemsFromDataBase[index];
-        console.log('Items from the database', $scope.itemsFromDataBase[index]);
+        var item = $scope.match[index];
         SearchItemService.sendDataToUserPage(item);
         window.location.href ="http://localhost:7138/#!/itemSearch";
         //
     };// end goTo
+
+
+    $scope.goToUserPageNoMatch = function(index) {
+        console.log('index ', index);
+        var item = $scope.noMatch[index];
+        SearchItemService.sendDataToUserPage(item);
+        window.location.href ="http://localhost:7138/#!/itemSearch";
+    };
+
+
 }//end of controller

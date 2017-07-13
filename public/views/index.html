@@ -3,7 +3,11 @@
     <head>
         <meta charset="utf-8">
         <title>Rental app</title>
-        <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+
+        <link href="https://fonts.googleapis.com/css?family=Heebo|Vidaloka|Archivo+Black||Patua+One" rel="stylesheet">
+
+
+
         <link rel="stylesheet" href="styles/userPage.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="vendors/angular.min.js" charset="utf-8"></script>
@@ -21,21 +25,36 @@
         <script src="scripts/services/credentialsService.js" charset="utf-8"></script>
         <script src="scripts/services/navBarService.js" charset="utf-8"></script>
         <script src="scripts/services/addItemSerivce.js" charset="utf-8"></script>
+        <script src="scripts/services/sendMessagesService.js" charset="utf-8"></script>
+        <script src="scripts/services/getLocation.js" charset="utf-8"></script>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.min.js" charset="utf-8"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
         <link rel="stylesheet" href="styles/login.css">
         <link rel="stylesheet" href="styles/register.css">
         <link rel="stylesheet" href="styles/style.css">
+        <link rel="stylesheet" href="styles/otherUserPage.css">
     </head>
     <body ng-app='myApp' ng-controller='DefaultController as dc'>
 
 
                 <div class="navContent" ng-if='toggleHeader'>
-                    <a href="http://localhost:7138/#!/login">Logout</a>
-                    <a href="http://localhost:7138/#!/userProfile"><button type="button" name="button">Home</button></a>
-                    <input class='searchNav' type="button" name="button" value="Search" ng-click='dc.searchForItem()' >
-                    <input id='getUserInput' type="text"  placeholder="Search Item" ng-model='dc.userSearch'/>
+                    <a href="http://localhost:7138/#!/userProfile"><h1 id='appName'>GarageShare</h1></a>
+
+                    <div class="navOptions">
+                        <a href="http://localhost:7138/#!/login">Logout</a>
+                        <a href="http://localhost:7138/#!/userProfile"><button type="button" name="button">Home</button></a>
+                        <input class='searchNav' type="button" name="button" value="Search" ng-click='dc.searchForItem()' >
+                        <input id='getUserInput' type="text"  placeholder="Search Item" ng-model='dc.userSearch'/>
+                        <select ng-model='dc.selectValue'>
+                            <option value="10">10 Miles</option>
+                            <option value="20">20 Miles</option>
+                            <option value="30">30 Miles</option>
+                            <option value="40">40 Miles</option>
+                            <option value="50">50 Miles</option>
+                        </select>
+                    </div>
+
 
                 </div>
 
@@ -44,11 +63,11 @@
 
             <ng-view></ng-view>
 
-        <!-- <footer>
+        <footer>
             <a href="http://localhost:7138/#!/login">Logout</a>
             <a href="http://localhost:7138/#!/userProfile"><button type="button" name="button">Home</button></a>
             <br>
             Copyright (c) 2017 Copyright Holder All Rights Reserved.
-        </footer> -->
+        </footer>
     </body>
 </html>

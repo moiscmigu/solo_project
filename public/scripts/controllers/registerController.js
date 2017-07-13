@@ -20,9 +20,11 @@ function RegisterController( $scope, credentialsService) {
                 lastName:$scope.lastNameRegister.toLowerCase(),
                 email:$scope.emailRegister,
                 password:$scope.passwordRegister,
-                zipcode:$scope.zipcode
+                zipcode:$scope.zipcode,
+                state:$scope.state.toLowerCase(),
+                city:$scope.city.toLowerCase(),
+                phone:$scope.phoneRegister
             };//end userCredentials
-
             credentialsService.sendRegister(userCredentials);
         }//end of conditional statement
     };//end register function

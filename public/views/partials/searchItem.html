@@ -1,10 +1,45 @@
-<div class="container" ng-init='userSearch()'>
-    <h1>Results: {{ItemSearched}}</h1>
-    <div class="itemsSearched" ng-repeat='items in itemsFromDataBase'>
-        <ul>
-            <li ng-click='goToUserPage($index)'>{{items.itemName}}</li>
-            <li>Description:{{items.description}}</li>
-        </ul>
-    </div>
+<div class="container"  ng-init='getBodyStyle()'>
+    <h1>Results for: {{ItemSearched}}</h1>
+    <table class="table table-condensed"  ng-init='userSearch()'>
+
+        <tr >
+            <th>item</th>
+            <th>description</th>
+            <th>State</th>
+            <th>City</th>
+
+        </tr>
+        <tr ng-repeat='items in match'>
+            <td ng-click='goToUserPageNoMatch($index)'>{{items.itemName}}</td>
+            <td >{{items.description}}</td>
+            <td >{{items.state}}</td>
+            <td>{{items.city}}</td>
+
+
+        </tr>
+
+    </table>
+
+
+    <h1>More Results for: {{ItemSearched}}</h1>
+    <table class="table table-condensed"  >
+
+        <tr >
+            <th>item</th>
+            <th>description</th>
+            <th>State</th>
+            <th>City</th>
+
+        </tr>
+        <tr ng-repeat='items in noMatch'>
+            <td ng-click='goToUserPageNoMatch($index)'>{{items.itemName}}</td>
+            <td >{{items.description}}</td>
+            <td >{{items.state}}</td>
+            <td>{{items.city}}</td>
+
+
+        </tr>
+
+    </table>
 
 </div>

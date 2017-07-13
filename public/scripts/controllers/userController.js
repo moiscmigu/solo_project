@@ -1,4 +1,4 @@
-function UserProfileController($scope, credentialsService, AddItemService) {
+function UserProfileController($scope, credentialsService, AddItemService, SearchItemService) {
     var vm = this;
         $scope.$emit('toggleHeader', true);
 
@@ -17,14 +17,23 @@ function UserProfileController($scope, credentialsService, AddItemService) {
         $scope.submitNewItem = function() {
             credentialsService.getUsers().then(function () {
                 $scope.sendUserEmail = credentialsService.userInfo.email;
+                $scope.sendUserZipcode = credentialsService.userInfo.zipcode;
+                $scope.sendUserState =credentialsService.userInfo.state;
+                $scope.sendUserCity =credentialsService.userInfo.city;
+                $scope.sendUserPhone =credentialsService.userInfo.phone;
+
                 var newItem = {
                     itemName:vm.itemName,
                     rentDay: vm.rentDay,
                     rentWeek: vm.rentWeek ,
                     rentMonth:vm.rentMonth,
                     email: $scope.sendUserEmail,
-                    phone: vm.phoneContact,
-                    description: vm.itemDescription
+                    description: vm.itemDescription,
+                    zipcode:$scope.sendUserZipcode,
+                    state:$scope.sendUserState,
+                    city: $scope.sendUserCity,
+                    phone: $scope.sendUserPhone
+
                 };//end newItem
 
                 AddItemService.addItemtoDB(newItem).then(function() {
@@ -74,8 +83,18 @@ function UserProfileController($scope, credentialsService, AddItemService) {
 
         $scope.userInfo = function() {
             credentialsService.getUsers().then(function () {
-                $scope.name = credentialsService.userInfo.firstName;
-                $scope.$emit('changeName', $scope.name);
+                $scope.userName = credentialsService.userInfo.firstName;
+
+                $scope.$emit('userInfo', credentialsService.userInfo);
+
             });//end credentialsService
         };//end user info function
+
+
+
+        $scope.deleteItem = function(index) {
+            var itemId = $scope.myItems[index]._id;
+            SearchItemService.deleteItem(itemId);
+
+        };//end of deleteItem
 }//end of userProfile

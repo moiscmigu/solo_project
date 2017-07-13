@@ -23,4 +23,25 @@ router.get('/:item', function(req, res) {
 
 });
 
+router.delete('/:id', function(req, res) {
+    console.log('delete url hit', req.params.id);
+    var id = req.params.id;
+
+    mongoItem.remove({ _id: id}, function(err) {
+    if (!err) {
+            res.send('deleted item');
+            
+
+    }
+    else {
+        console.log('err', err);
+            res.send(500);
+    }
+});
+
+
+
+
+});//end of delete
+
 module.exports = router;

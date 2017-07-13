@@ -1,7 +1,38 @@
 <div class="container userProfile" ng-init='revieceData()'>
 
     <div class="row">
-        <div class="col-md-6 itemsRenting" ng-init='getItems()' ng-if='showItems'>
+
+
+        <table class="table table-condensed"  ng-init='getItems()'>
+
+            <tr >
+                <th>Item</th>
+                <th>per-day</th>
+                <th>per-week</th>
+                <th>per-month</th>
+                <th>description</th>
+                <th>Email</th>
+                <th>Phone</th>
+            </tr>
+            <tr  ng-repeat='items in myItems'>
+                <td >{{items.itemName}}</td>
+                <td >{{items.rentDay | currency}}</td>
+                <td>{{items.rentWeek | currency}}</td>
+                <td>{{items.rentMonth | currency}}</td>
+                <td>{{items.email}}</td>
+                <td ng-click='sendPhoneMessage()'>{{items.phone}}</td>
+                <td>{{items.description}}</td>
+            </tr>
+
+        </table>
+
+
+
+
+
+
+
+        <!-- <div class="col-md-6 itemsRenting" ng-init='getItems()' ng-if='showItems'>
             <h3>Items Renting</h3>
             <ul>
                 <li ng-repeat='items in myItems' ng-click='showItemInfo($index)'>{{items.itemName}}</li>
@@ -14,10 +45,10 @@
             <h5>Rent for a day: {{rentItemDay | currency }}</h5>
             <h5>Rent for a week: {{rentItemWeek | currency }}</h5>
             <h5>Rent for a month: {{rentItemMonth | currency }}</h5>
-            <h5 ng-click='sendEmailMessage()'>Email: {{rentItemEmail}}</h5>
-            <h5>Phone: {{rentItemPhone}}</h5>
+            <h5>Email: {{rentItemEmail}}</h5>
+            <h5 ng-click='sendPhoneMessage()' ng-model='oc.userPhone'>Phones: {{rentItemPhone}}</h5>
             <h5>description: {{rentItemDescription}}</h5>
-        </div>
+        </div> -->
     </div>
 
 
