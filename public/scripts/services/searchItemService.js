@@ -21,10 +21,9 @@ myApp.service('SearchItemService', function($http) {
 
     sv.sendDataToUserPage = function(data) {
         if (data === undefined) {
-            console.log('not saved');
             return $http.get('/login/' + localStorage.getItem('user')).then(function(res) {
                 console.log('BACK FROM THE SERVER WITH', res);
-                sv.searchUserData = res.data;
+                sv.searchUserData = localStorage.getItem('user');
             });//end of http get call
 
         }// end of if conditional statement

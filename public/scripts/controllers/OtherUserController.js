@@ -14,9 +14,8 @@ function OtherUserController($scope, credentialsService, AddItemService, SearchI
             credentialsService.getUsers().then(function () {
                 AddItemService.getItemsFromDB($scope.userData.email).then(function() {
                     $scope.myItems = [];
-
                     for (var i = 0; i < AddItemService.itemsResponse.data.length; i++) {
-                            if ($scope.userData.email ===  AddItemService.itemsResponse.data[i].email) {
+                            if ($scope.userData ===  AddItemService.itemsResponse.data[i].email) {
                                 $scope.myItems.push(AddItemService.itemsResponse.data[i]);
                                 console.log('my items', $scope.myItems);
                             }//end conditional
@@ -45,7 +44,6 @@ function OtherUserController($scope, credentialsService, AddItemService, SearchI
 
 
         $scope.sendPhoneMessage = function(index) {
-            console.log('clicked');
             var message = prompt('Send a message...');
             var phoneNumber = String($scope.myItems[0].phone);
 

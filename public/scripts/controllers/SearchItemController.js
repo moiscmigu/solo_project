@@ -3,10 +3,6 @@ function SearchItemController($scope, SearchItemService) {
     $scope.match = [];
     $scope.noMatch = [];
 
-    $scope.getBodyStyle = function () {
-        console.log('in getBodyStyle');
-        return {background: "url(http://momentumbooks.com.au/wp-content/uploads/2013/06/space.jpg)" };
-    };
 
 
 
@@ -48,9 +44,9 @@ function SearchItemController($scope, SearchItemService) {
     $scope.goToUserPage = function(index) {
         console.log('index ', index);
         var item = $scope.match[index];
+        console.log(item);
         SearchItemService.sendDataToUserPage(item);
         window.location.href ="http://localhost:7138/#!/itemSearch";
-        //
     };// end goTo
 
 
