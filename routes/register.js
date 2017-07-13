@@ -30,7 +30,8 @@ router.post('/', function(req, res) {
               password: hash,
               state:req.body.state,
               city:req.body.city,
-              phone:req.body.phone
+              phone:req.body.phone,
+              image:req.body.image
           };
           console.log('saving user:', newUser);
           // save newUser to db

@@ -47,7 +47,7 @@ function OtherUserController($scope, credentialsService, AddItemService, SearchI
             var message = prompt('Send a message...');
             var phoneNumber = String($scope.myItems[0].phone);
 
-            // sendMessage.sendPhoneMessage(message, phoneNumber);
+            sendMessage.sendPhoneMessage(message, phoneNumber);
 
         };//end of sendPhoneMessage
         $scope.sendEmailMessage = function() {

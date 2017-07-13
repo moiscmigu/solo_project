@@ -88,3 +88,15 @@
 ul {
     list-style: none;
 }
+
+#userProfileImage {
+    height:20em;
+    width:20em;
+    display: inline-block;
+    float:left;
+    border-radius: 100%;
+}
+
+.userHeader {
+    margin:3em;
+}

@@ -7,6 +7,10 @@ function UserProfileController($scope, credentialsService, AddItemService, Searc
         $scope.changeButton = true;
         $scope.myItems = [];
 
+
+
+
+
         $scope.addNewItem = function() {
             $scope.popupDiv = !$scope.popupDiv;
 
@@ -84,7 +88,8 @@ function UserProfileController($scope, credentialsService, AddItemService, Searc
         $scope.userInfo = function() {
             credentialsService.getUsers().then(function () {
                 $scope.userName = credentialsService.userInfo.firstName;
-
+                console.log('user info', credentialsService.userInfo);
+                $scope.userImage = credentialsService.userInfo.image;
                 $scope.$emit('userInfo', credentialsService.userInfo);
 
             });//end credentialsService
