@@ -9,7 +9,7 @@ function LoginController($scope, credentialsService) {
                    text: "Something went wrong",
                    type: "error"
                });//end of sweetAlert
-        }  else {
+        } else {
             var userCredentials = {
                 email:$scope.emailLogin,
                 password:$scope.passwordLogin

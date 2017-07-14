@@ -1,7 +1,7 @@
 function UserProfileController($scope, credentialsService, AddItemService, SearchItemService) {
     var vm = this;
         $scope.$emit('toggleHeader', true);
-        $scope.$emit('toggleFooter', true);
+        $scope.$emit('toggleFooter', false);
         $scope.$emit('changeBackgroundImage', "bodyUserPage");
 
         $scope.showItems = true;
@@ -103,4 +103,7 @@ function UserProfileController($scope, credentialsService, AddItemService, Searc
             SearchItemService.deleteItem(itemId);
 
         };//end of deleteItem
+
+
+
 }//end of userProfile
