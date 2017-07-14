@@ -1,6 +1,15 @@
 function DefaultController($scope, navBarService, SearchItemService, getLocationService) {
-    console.log('default');
     var vm = this;
+
+
+    $scope.class = "bodyOne";
+
+    $scope.toggleFooter = true;
+    $scope.$on('userInfo', function(evt, data) {
+        $scope.state = data.state;
+        $scope.backgroundImage = data;
+
+    });
 
     $scope.toggleHeader = true;
     $scope.userNameNav ='';
@@ -9,13 +18,19 @@ function DefaultController($scope, navBarService, SearchItemService, getLocation
         $scope.toggleHeader = data;
     });
 
+    $scope.$on('toggleFooter', function(evt, data) {
+        $scope.toggleFooter = data;
+    });
+
     $scope.$on('changeName', function(evt, data) {
         $scope.userNameNav = data;
     });
 
-    $scope.$on('userInfo', function(evt, data) {
-        $scope.state = data.state;
 
+
+
+    $scope.$on('changeBackgroundImage', function(evt, data) {
+        $scope.class = data;
     });
 
 

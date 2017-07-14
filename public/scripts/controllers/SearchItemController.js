@@ -1,5 +1,6 @@
 function SearchItemController($scope, SearchItemService) {
     $scope.$emit('toggleHeader', true);
+    $scope.$emit('changeBackgroundImage', "bodySearchItemPage");
     $scope.match = [];
     $scope.noMatch = [];
 

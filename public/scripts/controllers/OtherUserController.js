@@ -39,6 +39,8 @@ function OtherUserController($scope, credentialsService, AddItemService, SearchI
         $scope.revieceData = function(index) {
             SearchItemService.sendDataToUserPage().then(function() {
                 $scope.userData = SearchItemService.searchUserData;
+                console.log('user data', SearchItemService.allOfUserData.image);
+                $scope.userImage = SearchItemService.allOfUserData.image;
             });//end of SearchItemService
         };// end goTo
 

@@ -11,6 +11,7 @@
 
             <tr >
                 <th>Item</th>
+                <th></th>
                 <th>per-day</th>
                 <th>per-week</th>
                 <th>per-month</th>
@@ -23,6 +24,7 @@
             </tr>
             <tr  ng-repeat='items in myItems'>
                 <td >{{items.itemName}}</td>
+                <td><a href="{{items.image}}"><img src="{{items.image}}" alt="" class='itemImagetd'></a></td>
                 <td >{{items.rentDay | currency}}</td>
                 <td>{{items.rentWeek | currency}}</td>
                 <td>{{items.rentMonth | currency}}</td>
@@ -40,17 +42,17 @@
 
                 <tr >
                     <th>Item</th>
+                    <th>Image</th>
                     <th>per-day</th>
                     <th>per-week</th>
                     <th>per-month</th>
-
-
                     <th>description</th>
 
 
                 </tr>
                 <tr>
                     <td ><input type="text" name="itemName"  ng-model='uc.itemName'></td>
+                    <td><input type="button" value="Upload" ng-click="showPicker()" /></td>
                     <td ><input type="number" name="rentDay" value="" ng-model='uc.rentDay'></td>
                     <td><input type="number" name="rentWeek" value="" ng-model='uc.rentWeek'></td>
                     <td><input type="number" name="rentMonth" value="" ng-model='uc.rentMonth'></td>
@@ -82,4 +84,5 @@
 
 
     <input  type="submit" name="button" ng-model='addButton' ng-click='addNewItem()' value ='Add New' ng-show='changeButton'/>
+    
 </div>

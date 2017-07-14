@@ -1,6 +1,8 @@
 function UserProfileController($scope, credentialsService, AddItemService, SearchItemService) {
     var vm = this;
         $scope.$emit('toggleHeader', true);
+        $scope.$emit('toggleFooter', true);
+        $scope.$emit('changeBackgroundImage', "bodyUserPage");
 
         $scope.showItems = true;
         $scope.popupDiv = false;
@@ -17,6 +19,15 @@ function UserProfileController($scope, credentialsService, AddItemService, Searc
             $scope.showItems = false;
             $scope.changeButton = false;
         };//end addNewItem function
+
+        var client = filestack.init('AQEH2W4M2RJq6V56D1Ntyz');
+        $scope.showPicker = function() {
+            client.pick({
+            }).then(function(result) {
+                $scope.imgUrl = result.filesUploaded[0].url;
+            });
+        };
+
 
         $scope.submitNewItem = function() {
             credentialsService.getUsers().then(function () {
@@ -36,7 +47,8 @@ function UserProfileController($scope, credentialsService, AddItemService, Searc
                     zipcode:$scope.sendUserZipcode,
                     state:$scope.sendUserState,
                     city: $scope.sendUserCity,
-                    phone: $scope.sendUserPhone
+                    phone: $scope.sendUserPhone,
+                    image:$scope.imgUrl
 
                 };//end newItem
 
@@ -75,20 +87,9 @@ function UserProfileController($scope, credentialsService, AddItemService, Searc
             $scope.changeButton = true;
         };//end cancelNewItem
 
-        $scope.showItemInfo = function(index) {
-            $scope.itemNameDisplay = $scope.myItems[index].itemName;
-            $scope.rentItemDay = $scope.myItems[index].rentDay;
-            $scope.rentItemWeek = $scope.myItems[index].rentWeek;
-            $scope.rentItemMonth = $scope.myItems[index].rentMonth;
-            $scope.rentItemEmail = $scope.myItems[index].email;
-            $scope.rentItemPhone = $scope.myItems[index].phone;
-            $scope.rentItemDescription = $scope.myItems[index].description;
-        };//end showItemInfo
-
         $scope.userInfo = function() {
             credentialsService.getUsers().then(function () {
                 $scope.userName = credentialsService.userInfo.firstName;
-                console.log('user info', credentialsService.userInfo);
                 $scope.userImage = credentialsService.userInfo.image;
                 $scope.$emit('userInfo', credentialsService.userInfo);
 

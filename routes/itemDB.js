@@ -16,7 +16,8 @@ var itemSchema = new mongoose.Schema({
     description: String,
     zipcode:Number,
     state:String,
-    city:String
+    city:String,
+    image:String
 });
 
 var itemModel = mongoose.model('itemModel', itemSchema);

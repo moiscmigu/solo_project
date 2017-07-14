@@ -35,7 +35,6 @@ function credentialsService($http) {
         }
         else {
 
-        console.log(data);
         return $http.get('/login/' + data).then(function(res) {
             sv.userInfo = res.data;
             localStorage.setItem('userData', data);

@@ -23,6 +23,7 @@ myApp.service('SearchItemService', function($http) {
         if (data === undefined) {
             return $http.get('/login/' + localStorage.getItem('user')).then(function(res) {
                 console.log('BACK FROM THE SERVER WITH', res);
+                sv.allOfUserData = res.data;
                 sv.searchUserData = localStorage.getItem('user');
             });//end of http get call
 

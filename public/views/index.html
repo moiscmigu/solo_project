@@ -33,12 +33,12 @@
         <link rel="stylesheet" href="styles/style.css">
         <link rel="stylesheet" href="styles/otherUserPage.css">
     </head>
-    <body ng-app='myApp' ng-controller='DefaultController as dc'>
+    <body ng-app='myApp' ng-controller='DefaultController as dc'   class="{{class}}" >
 
 
                 <div class="navContent" ng-if='toggleHeader'>
                     <a href="http://localhost:7138/#!/userProfile"><h1 id='appName'>GarageShare</h1></a>
-
+                    
                     <div class="navOptions">
                         <a href="http://localhost:7138/#!/login">Logout</a>
                         <a href="http://localhost:7138/#!/userProfile"><button type="button" name="button">Home</button></a>
@@ -61,7 +61,7 @@
 
             <ng-view></ng-view>
 
-        <footer>
+        <footer ng-if='toggleFooter'>
             <a href="http://localhost:7138/#!/login">Logout</a>
             <a href="http://localhost:7138/#!/userProfile"><button type="button" name="button">Home</button></a>
             <br>

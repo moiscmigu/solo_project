@@ -1,6 +1,7 @@
 myApp.service('AddItemService', function($http) {
     var sv = this;
     sv.addItemtoDB = function(item) {
+        console.log('from the server',item);
         return $http.post('/newItem', item).then(function(res){
             sv.response = res;
             return sv.response;

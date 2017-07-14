@@ -90,8 +90,8 @@ ul {
 }
 
 #userProfileImage {
-    height:20em;
-    width:20em;
+    height:15em;
+    width:15em;
     display: inline-block;
     float:left;
     border-radius: 100%;
@@ -99,4 +99,10 @@ ul {
 
 .userHeader {
     margin:3em;
+}
+
+
+.itemImagetd {
+    height:2em;
+    width:2em;
 }

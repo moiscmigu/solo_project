@@ -5,7 +5,8 @@ controller('RegisterController', RegisterController).
 controller('LoginController', LoginController).
 controller('UserProfileController', UserProfileController).
 controller('SearchItemController', SearchItemController).
-controller('OtherUserController', OtherUserController);
+controller('OtherUserController', OtherUserController).
+controller('termsAndCondtions', termsAndCondtions);
 
 
 
@@ -29,5 +30,14 @@ myApp.config(function($routeProvider) {
     }).when('/itemSearch', {
         templateUrl:'views/partials/searchUserProfile.html',
         controller:'OtherUserController as oc'
+    }).when('/termsAndCondtions', {
+        templateUrl:'/views/partials/terms.html',
+        controller:'termsAndCondtions'
     });
 });//end config
+function termsAndCondtions($scope) {
+    console.log('in terms and conditions');
+    $scope.$emit('changeBackgroundImage', "terms");
+    $scope.$emit('toggleHeader', false);
+    $scope.$emit('toggleFooter', false);
+}

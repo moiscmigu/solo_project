@@ -1,5 +1,6 @@
 function LoginController($scope, credentialsService) {
     $scope.$emit('toggleHeader', false);
+    $scope.$emit('toggleFooter', false);
 
     $scope.login = function() {
         if ($scope.emailLogin === undefined || $scope.passwordLogin === undefined) {

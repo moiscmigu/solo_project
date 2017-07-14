@@ -1,12 +1,19 @@
 <div class="container userProfile" ng-init='revieceData()'>
-
     <div class="row">
+        <div class="col-md-6">
+            <img src="{{userImage}}" alt=""  id='userProfileImage'>
+        </div>
+        <div class="col-md-6">
+            <h1>Welcome</h1>
+        </div>
+    </div>
 
 
         <table class="table table-condensed"  ng-init='getItems()'>
 
             <tr >
                 <th>Item</th>
+                <th></th>
                 <th>per-day</th>
                 <th>per-week</th>
                 <th>per-month</th>
@@ -16,6 +23,7 @@
             </tr>
             <tr  ng-repeat='items in myItems'>
                 <td >{{items.itemName}}</td>
+                <td><a href="{{items.image}}"><img src="{{items.image}}" alt="" class='itemImagetd'></a></td>
                 <td >{{items.rentDay | currency}}</td>
                 <td>{{items.rentWeek | currency}}</td>
                 <td>{{items.rentMonth | currency}}</td>
@@ -32,24 +40,7 @@
 
 
 
-        <!-- <div class="col-md-6 itemsRenting" ng-init='getItems()' ng-if='showItems'>
-            <h3>Items Renting</h3>
-            <ul>
-                <li ng-repeat='items in myItems' ng-click='showItemInfo($index)'>{{items.itemName}}</li>
 
-            </ul>
-        </div>
-
-        <div class="col-md-6 itemInfo">
-            <h1>{{itemNameDisplay}}</h1>
-            <h5>Rent for a day: {{rentItemDay | currency }}</h5>
-            <h5>Rent for a week: {{rentItemWeek | currency }}</h5>
-            <h5>Rent for a month: {{rentItemMonth | currency }}</h5>
-            <h5>Email: {{rentItemEmail}}</h5>
-            <h5 ng-click='sendPhoneMessage()' ng-model='oc.userPhone'>Phones: {{rentItemPhone}}</h5>
-            <h5>description: {{rentItemDescription}}</h5>
-        </div> -->
-    </div>
 
 
 

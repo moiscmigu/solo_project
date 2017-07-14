@@ -18,7 +18,8 @@ router.post('/', function(req, res){
         description: req.body.description,
         zipcode: req.body.zipcode,
         state:req.body.state,
-        city:req.body.city
+        city:req.body.city,
+        image:req.body.image
     };
     console.log('saving user:', newUser);
     // save newUser to db
