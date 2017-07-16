@@ -26,12 +26,11 @@ function DefaultController($scope, navBarService, SearchItemService, getLocation
         $scope.userNameNav = data;
     });
 
-
-
-
     $scope.$on('changeBackgroundImage', function(evt, data) {
+        console.log('should change the background image with this url', data);
         $scope.class = data;
     });
+
 
 
     vm.searchForItem = function() {

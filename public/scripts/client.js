@@ -21,7 +21,7 @@ myApp.config(function($routeProvider) {
     }).when('/login', {
         templateUrl:'views/partials/logIn.html',
         controller:'LoginController'
-    }).when('/userProfile', {
+    }).when('/userProfile/', {
         templateUrl:'views/partials/userProfile.html',
         controller:'UserProfileController as uc'
     }).when('/search', {

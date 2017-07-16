@@ -9,7 +9,7 @@
 
         <input type="number" name="zipcode" ng-model='zipcode' class='registerInput' placeholder="Zipcode">
 
-        <input type="text" name="state" ng-model='state' class='registerInput' placeholder="State">
+        <input type="text" maxlength="2"  name="state" ng-model='state' class='registerInput' placeholder="State">
 
         <input type="text" name="city" ng-model='city' class='registerInput' placeholder="city">
 
@@ -19,11 +19,12 @@
 
         <input type="password" name="Password" ng-model='passwordRegister' class='registerInput' placeholder="password">
 
-        <input type="button" value="Upload" ng-click="showPicker()" />
+        <input type="button" value="Upload Profile Image" ng-click="showPicker()" />
 
 
 
 
-        <a href="http://localhost:7138/#!/login" ng-click='register()' >Log In</a>
+        <!-- <a href="http://localhost:7138/#!/login" ng-click='register()' >Log In</a> -->
+        <button type="button" name="button" ng-click='register()' id='loginButton'>Log in</button>
 
 </div>

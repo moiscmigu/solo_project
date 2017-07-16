@@ -1,13 +1,13 @@
-<div class="container userProfile" ng-init='userInfo()'>
+<div class="container userProfile" >
 
-    <div class="userHeader">
+    <div class="userHeader" ng-init='userInfo()'>
         <img src="{{userImage}}" alt="asdf" id='userProfileImage'>
         <h1 class='col-md-6'>Welcome {{userName}}</h1>
     </div>
 
 
 
-        <table class="table table-condensed"  ng-init='getItems()' ng-if='showItems'>
+        <table class="table table-condensed" ng-init='getItems()' ng-if='showItems'>
 
             <tr >
                 <th>Item</th>
@@ -20,6 +20,7 @@
                 <th>Phone</th>
                 <th>description</th>
                 <th>Delete</th>
+                <th>Edit</th>
 
             </tr>
             <tr  ng-repeat='items in myItems'>
@@ -32,62 +33,48 @@
                 <td ng-click='sendPhoneMessage()'>{{items.phone}}</td>
                 <td>{{items.description}}</td>
                 <td><button type="button" name="button" ng-click='deleteItem($index)'>Delete</button></td>
+                <td><button type="button" name="button" ng-click='editItem($index)' >Edit</button></td>
             </tr>
-
         </table>
-        <!-- <div class="col-md-6 editableContent" ng-if='popupDiv'>
-
-
-            <table class="table table-condensed"  >
-
-                <tr >
-                    <th>Item</th>
-                    <th>Image</th>
-                    <th>per-day</th>
-                    <th>per-week</th>
-                    <th>per-month</th>
-                    <th>description</th>
-
-
-                </tr>
-                <tr>
-                    <td ><input type="text" name="itemName"  ng-model='uc.itemName'></td>
-                    <td><input type="button" value="Upload" ng-click="showPicker()" /></td>
-                    <td ><input type="number" name="rentDay" value="" ng-model='uc.rentDay'></td>
-                    <td><input type="number" name="rentWeek" value="" ng-model='uc.rentWeek'></td>
-                    <td><input type="number" name="rentMonth" value="" ng-model='uc.rentMonth'></td>
-                    <td><textarea name="itemDescription" rows="8" cols="80" id='contentTextArea' ng-model='uc.itemDescription'></textarea></td>
-
-
-            </table>
-
-            <input id='submitDataButton' type="submit" name="button" ng-model='submitButton' ng-click='submitNewItem()' value ='Submit'  ng-hide='changeButton'/>
-            <input id='submitDataButton' type="submit" name="button" ng-model='submitButton' ng-click='cancelNewItem()' value ='Cancel'  ng-hide='changeButton'/>
-        </div> -->
-
-
     <input  id="myBtn"  onclick="document.getElementById('myModal').style.display='block'" type="submit" name="button" ng-model='addButton' ng-click='addNewItem()' value ='Add New' ng-show='changeButton'/>
 
 
-    <div id="myModal" class="modal">
+    <div id="myModal" class="modal" style='display: {{showMyModal}}'>
     <!-- Modal content -->
         <div class="modal-content">
-            <span class="close" onclick="document.getElementById('myModal').style.display='none'">&times;</span>
+            <span class="close" onclick="document.getElementById('myModal').style.display='none'" ng-click='hideMyModal()'>&times;</span>
             <div class="modalContent">
                 <h1>Add A Item</h1>
                 <input type="text" name="itemName"  ng-model='uc.itemName' placeholder="Item Name">
-                <input type="button" value="Upload Image" ng-click="showPicker()" />
+                <input type="button" value="Upload Image" ng-click="showPicker()" ng-model='uploadImageSubmit'/>
                 <input type="number" name="rentDay" value="" ng-model='uc.rentDay' placeholder="$$-per-day">
                 <input type="number" name="rentWeek" value="" ng-model='uc.rentWeek' placeholder="$$-per-week">
                 <input type="number" name="rentMonth" value="" ng-model='uc.rentMonth' placeholder="$$-per-Month">
                 <textarea name="itemDescription" rows="8" cols="80" id='contentTextArea' ng-model='uc.itemDescription'></textarea>
 
-                <input id='submitDataButton' type="submit" name="button" ng-model='submitButton' ng-click='submitNewItem()' value ='Submit'  ng-hide='changeButton' onclick="document.getElementById('myModal').style.display='none'"/>
+                <input id='submitDataButton' type="submit" name="button" ng-model='submitButton' ng-click='submitNewItem()' value ='Submit'  ng-hide='changeButton' />
 
             </div>
         </div>
     </div>
 
 
+    <div id="editItem" class="modal" style='display: {{showMyEditModal}}'>
+        <div class="modal-content">
+            <span class="close" onclick="document.getElementById('editItem').style.display='none'" ng-click='toggleEditModal()'>&times;</span>
+            <div class="modalContent">
+                <h1>Edit</h1>
+                <input type="text" name="" value="" ng-model='editItemName' placeholder="Item Name">
+                <input type="button" value="Upload Image" ng-click="showPicker()" ng-model='editItemImage'/>
+                <input type="number" name="rentDay" value="" ng-model='editItemPricePerDay' placeholder="$$-per-day">
+                <input type="number" name="rentWeek" value="" ng-model='editItemPricePerWeek' placeholder="$$-per-week">
+                <input type="number" name="rentMonth" value="" ng-model='editItemPricePerMonth' placeholder="$$-per-Month">
+                <textarea name="itemDescription" rows="8" cols="80" id='contentTextArea' ng-model='editItemDescription'></textarea>
+                 <input id='submitDataButton' type="submit" name="button" ng-model='submitButton' ng-click='submitNewEditedItem()' value='Submit'/> -->
+
+
+            </div>
+        </div>
+    </div>
 
 </div>
