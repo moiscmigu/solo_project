@@ -77,9 +77,10 @@ function UserProfileController($scope, credentialsService, AddItemService, Searc
             $scope.showItems = true;
             $scope.changeButton = true;
              $scope.showMyModal = 'none';
-             return $scope.showMyModal;
+
         }//end of conditional count == 0
         });//end credentialsService.getUsers()
+        return $scope.showMyModal;
     };//end submitNewItem function
 
     $scope.getItems = function() {
