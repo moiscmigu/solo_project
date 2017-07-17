@@ -2,6 +2,7 @@ function DefaultController($scope, navBarService, SearchItemService, getLocation
     var vm = this;
 
 
+
     $scope.class = "bodyOne";
 
     $scope.toggleFooter = true;
