@@ -2,11 +2,12 @@ var express = require('express');
 var router = express.Router();
 var bodyParser = require('body-parser');
 var nodemailer = require('nodemailer');
-var TWILIO_TOKEN = "270ff32fe16828869dc30e0c6926fa9e";
-var TWILIO_ACCOUNT_SID = "AC55a59221acb23a5aa6f046740bb73317";
+var config = require('config.json')('./sample.json');
+// var TWILIO_TOKEN = "270ff32fe16828869dc30e0c6926fa9e";
+// var TWILIO_ACCOUNT_SID = "AC55a59221acb23a5aa6f046740bb73317";
 
 var twilio = require('twilio');
-var client = new twilio(TWILIO_ACCOUNT_SID, TWILIO_TOKEN);
+var client = new twilio(config.twilio.twil_sid, config.twilio.twil_token);
 
 router.use(bodyParser.urlencoded({extended: true}));
 router.use(bodyParser.json());
