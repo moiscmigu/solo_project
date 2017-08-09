@@ -2,7 +2,7 @@ var mongoose = require ('mongoose');
 
 
 
-mongoose.connect ('localhost:27017/rentRegister');
+mongoose.connect(process.env.MONGODB_URL);
 
 
 
