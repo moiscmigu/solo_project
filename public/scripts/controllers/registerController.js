@@ -59,7 +59,7 @@ function RegisterController( $scope, credentialsService) {
                   text: 'User Created',
                   type :'success'
                 });
-                window.location.href ="http://localhost:7138/#!/login";
+                window.location.href ="#!/login";
             }
     };//end register function
 }//end register controller

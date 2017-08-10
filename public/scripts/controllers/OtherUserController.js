@@ -17,7 +17,6 @@ function OtherUserController($scope, credentialsService, AddItemService, SearchI
                     for (var i = 0; i < AddItemService.itemsResponse.data.length; i++) {
                             if ($scope.userData ===  AddItemService.itemsResponse.data[i].email) {
                                 $scope.myItems.push(AddItemService.itemsResponse.data[i]);
-                                console.log('my items', $scope.myItems);
                             }//end conditional
 
                     }//end for loop
@@ -39,7 +38,6 @@ function OtherUserController($scope, credentialsService, AddItemService, SearchI
         $scope.revieceData = function(index) {
             SearchItemService.sendDataToUserPage().then(function() {
                 $scope.userData = SearchItemService.searchUserData;
-                console.log('user data', SearchItemService.allOfUserData.image);
                 $scope.userImage = SearchItemService.allOfUserData.image;
             });//end of SearchItemService
         };// end goTo

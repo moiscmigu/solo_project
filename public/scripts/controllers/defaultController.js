@@ -46,30 +46,7 @@ function DefaultController($scope, navBarService, SearchItemService, getLocation
         };
 
         SearchItemService.search(objectToSend);
-
-
-        // .then(function() {
-        //     console.log('sadf', SearchItemService.dbItems);
-        //     for (var i = 0; i <  SearchItemService.dbItems.length; i++) {
-        //         console.log(SearchItemService.dbItems[i].state );
-        //         console.log($scope.state);
-        //         if (SearchItemService.dbItems[i].state === $scope.state) {
-        //             yesArr.push(SearchItemService.dbItems[i]);
-        //         } else {
-        //
-        //             noArr.push(SearchItemService.dbItems[i]);
-        //         }
-        //     }
-        //     SearchItemService.saveMatches(yesArr, noArr);
-        //
-        //
-        //
-        //
-        //     });//end of then
-
-
-
-        window.location.href ="http://localhost:7138/#!/search";
+        window.location.href ="#!/search";
     };//end of
 
 }//end DefaultController

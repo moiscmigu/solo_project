@@ -181,7 +181,6 @@ function UserProfileController($scope, credentialsService, AddItemService, Searc
 
 
 function parseItem(object) {
-    console.log('inside of parse int');
     var count = 0;
     for (var x in object) {
         if (object.hasOwnProperty(x)) {
