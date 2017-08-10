@@ -11,7 +11,7 @@ function LoginController($scope, credentialsService) {
         };//end of userLogin
 
 
-        count = loginCheck(userLogin);
+        count = parseItem(userLogin);
 
         if (count === 0) {
             console.log('login in now');
@@ -51,40 +51,3 @@ function LoginController($scope, credentialsService) {
         }
     };//end log in function
 }//end register controller
-
-
-function loginCheck(object) {
-    console.log('inside of loginCheck');
-    var count = 0;
-    for(var x in object) {
-        if(object.hasOwnProperty(x))
-            if (object[x] === undefined || object[x] === "") {
-                if (x === 'email') {
-                    sweetAlert({
-                              title: "Alert!",
-                              text: "Please enter valid email",
-                              type: "error"
-                          });//end of sweetAlert
-                    count ++;
-                } else if (x == "terms" ) {
-                if (x === 'terms') {
-                    sweetAlert({
-                              title: "Alert!",
-                              text: "Please agree to terms",
-                              type: "error"
-                          });//end of sweetAlert
-                    count ++;
-                }
-            }
-                else {
-                    sweetAlert({
-                              title: "Alert!",
-                              text: "Please enter " +  x,
-                              type: "error"
-                          });//end of sweetAlert
-                    count ++;
-                }
-            }//end of if userCredentials is undefined or empty string
-        }// end of  for loop`
-        return count;
-}//end of function

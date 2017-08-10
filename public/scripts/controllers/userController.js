@@ -120,9 +120,7 @@ function UserProfileController($scope, credentialsService, AddItemService, Searc
 
     //if item is edited, delete current item and add this as a new one
     $scope.editItem = function(index) {
-        console.log(index);
         $scope.itemToDelete = index;
-        console.log($scope.myItems[index].image);
         $scope.editItemName = $scope.myItems[index].itemName;
         $scope.editItemImage = $scope.myItems[index].image;
         $scope.editItemPricePerDay = $scope.myItems[index].rentDay;
@@ -158,7 +156,6 @@ function UserProfileController($scope, credentialsService, AddItemService, Searc
             var count = parseItem(newItem);
 
             if (count === 0) {
-                console.log('asdfasd');
                 $scope.deleteItem($scope.itemToDelete);
                 AddItemService.addItemtoDB(newItem).then(function() {
                     res = AddItemService.response;

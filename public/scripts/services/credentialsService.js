@@ -7,17 +7,12 @@ function credentialsService($http) {
 
     //registers a new user
     sv.sendRegister = function(data) {
-
-        console.log('from service', data);
         return $http.post('/register', data).then(function(res) {
         });
     };//end of sendRegister\
-
     //checks to see if user exitst
 
     sv.sendLogin = function(data) {
-
-
         return $http.post('/login', data).then(function(res) {
 
             sv.response = res.data;
@@ -41,8 +36,5 @@ function credentialsService($http) {
             return sv.userInfo;
         });//end of http get call
         }
-
     };//end of sv.getUsers
-
-
 }//end of service
