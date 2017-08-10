@@ -14,8 +14,8 @@ controller('termsAndCondtions', termsAndCondtions);
 //
 myApp.config(function($routeProvider) {
     $routeProvider.when('/', {
-        template:'',
-        controller:'DefaultController as dc'
+        templateUrl:'views/partials/logIn.html',
+        controller:'LoginController'
     }).when('/register', {
         templateUrl:'views/partials/register.html',
         controller:'RegisterController'
