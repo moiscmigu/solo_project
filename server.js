@@ -12,7 +12,7 @@ var logIn = require('./routes/login');
 var newItem = require('./routes/newItem.js');
 var searchItem = require('./routes/searchItem');
 var sendMessage = require('./routes/sendMessage');
-var sendEmailMessage = require('./routes/sendEmailMessage');
+// var sendEmailMessage = require('./routes/sendEmailMessage');
 //uses
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({extended:true}));
@@ -22,7 +22,7 @@ app.use('/login', logIn);
 app.use('/newItem', newItem);
 app.use('/searchItem', searchItem);
 app.use('/sendMessage', sendMessage);
-app.use('/sendEmailMessage', sendEmailMessage);
+// app.use('/sendEmailMessage', sendEmailMessage);
 
 
 app.listen(port, function() {
