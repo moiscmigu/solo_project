@@ -26,6 +26,6 @@ app.use('/sendEmailMessage', sendEmailMessage);
 
 
 app.listen(port, function() {
-    console.log('Server up on port:');
+    console.log('Server up on port:', port);
 
 });//end listen

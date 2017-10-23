@@ -1,5 +1,5 @@
 .bodyOne {
-    background-image: url('https://static.pexels.com/photos/297643/pexels-photo-297643.jpeg');
+    background-image: url('.././img/skate.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: repeat;
@@ -8,7 +8,7 @@
 }
 
 .bodyUserPage {
-    background-image: url('https://static.pexels.com/photos/413195/pexels-photo-413195.jpeg');
+    background-image: url('.././img/skate-2.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: repeat;
@@ -17,7 +17,7 @@
 }
 
 .bodySearchItemPage {
-    background-image: url('https://static.pexels.com/photos/413195/pexels-photo-413195.jpeg');
+    background-image: url('.././img/roof.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: repeat;

@@ -32,8 +32,8 @@
                 <td>{{items.email}}</td>
                 <td ng-click='sendPhoneMessage()'>{{items.phone}}</td>
                 <td>{{items.description}}</td>
-                <td><button type="button" name="button" ng-click='deleteItem($index)'>Delete</button></td>
-                <td><button type="button" name="button" ng-click='editItem($index)' >Edit</button></td>
+                <td><button type="button" name="button" ng-click='deleteItem($index)' style='color: black'>Delete</button></td>
+                <td><button type="button" name="button" ng-click='editItem($index)' style='color: black'>Edit</button></td>
             </tr>
         </table>
     <input  id="myBtn"  onclick="document.getElementById('myModal').style.display='block'" type="submit" name="button" ng-model='addButton' ng-click='addNewItem()' value ='Add New' ng-show='changeButton'/>
