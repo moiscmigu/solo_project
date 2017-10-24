@@ -2,7 +2,7 @@ var mongoose = require ('mongoose');
 
 
 
-mongoose.connect("mongodb://heroku_09wjnwq1:bvnvj00llce5c8j1oe1psjd3hi@ds161640.mlab.com:61640/heroku_09wjnwq1");
+mongoose.connect(process.env.MONGODB_URI);
 
 
 
