@@ -1,6 +1,6 @@
 var mongoose = require ('mongoose');
 
-mongoose.connect ("mongodb://heroku_p2n5vtds:uuma40pb6rpu2iun9hggo6c5u1@ds113000.mlab.com:13000/heroku_p2n5vtds");
+mongoose.connect ("mongodb://heroku_09wjnwq1:bvnvj00llce5c8j1oe1psjd3hi@ds161640.mlab.com:61640/heroku_09wjnwq1");
 
 var userSchema = new mongoose.Schema({
   firstName:String,
